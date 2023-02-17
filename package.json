@@ -1,7 +1,7 @@
 {
-  "name": "mac-dev-tools",
+  "name": "dev-client-mac-tools",
   "version": "0.1.0",
-  "description": "My new module",
+  "description": "Expo Config Plugin to add a Dev Tools Menu on the Mac",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "private": "true",
@@ -12,13 +12,11 @@
     "test": "expo-module test",
     "prepare": "expo-module prepare",
     "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module",
-    "open:ios": "open -a \"Xcode\" example/ios",
-    "open:android": "open -a \"Android Studio\" example/android"
+    "expo-module": "expo-module"
   },
   "author": "Max von Webel <max@343max.de> (https://github.com/343max)",
   "license": "MIT",
-  "homepage": "https://gitlab.com/metrofs/platform/frontend/mfs-app",
+  "homepage": "https://github.com/343max/dev-client-mac-tools",
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",
