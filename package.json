@@ -1,6 +1,6 @@
 {
   "name": "dev-client-mac-tools",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Expo Config Plugin to add a Dev Tools Menu on the Mac",
   "main": "build/index.js",
   "types": "build/index.d.ts",
