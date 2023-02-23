@@ -184,6 +184,17 @@ _handler(19);
     
     toggleDarkMode.state = isToggled ? UIMenuElementStateOn : UIMenuElementStateOff;
     
+    SEL reloadMenuAction = [_menuResponder generateSelector:^{
+        RCTTriggerReloadCommandListeners(@"Dev Request");
+    }];
+    
+    UIKeyCommand *reloadMenu = [UIKeyCommand commandWithTitle:@"Reload"
+                                                        image:nil
+                                                       action:reloadMenuAction
+                                                        input:@"R"
+                                                modifierFlags:UIKeyModifierCommand | UIKeyModifierControl
+                                                 propertyList:@"Reload!"];
+    
     SEL showDevMenuAction = [_menuResponder generateSelector:^{
         [[DevMenuManager shared] toggleMenu];
     }];
@@ -259,6 +270,7 @@ _handler(19);
     NSArray *menuItems = [@[
         stayOnTop,
         stayOnTopOfEditors,
+        reloadMenu,
         toggleDarkMode,
         resizeMenu,
         windowAlphaMenu,
