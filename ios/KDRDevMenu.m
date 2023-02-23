@@ -8,6 +8,7 @@
 
 #import <React/RCTBridge.h>
 #import <React/RCTDevSettings.h>
+#import <React/RCTReloadCommand.h>
 
 #if __has_include(<React/RCTDevMenu.h>)
 #import <React/RCTDevMenu.h>
@@ -206,39 +207,6 @@ _handler(19);
                                               modifierFlags:UIKeyModifierCommand | UIKeyModifierControl
                                                propertyList:nil];
     
-    NSArray *devMenuItems = array_map([KDRDevMenu devMenuItemsForBridge:_bridge], ^id _Nonnull(RCTDevMenuItem *item, NSUInteger idx) {
-        NSString *keyEquivalent = nil;
-        NSString *title = [item title];
-        if ([title isEqualToString:@"Reload"]) {
-            keyEquivalent = @"r";
-        } else if([title isEqualToString:@"Stop Debugging"] | [title isEqualToString:@"Debug with Chrome"]) {
-            keyEquivalent = @"d";
-        } else if([title isEqualToString:@"Show Perf Monitor"] | [title isEqualToString:@"Hide Perf Monitor"]) {
-            keyEquivalent = @"p";
-        } else if([title isEqualToString:@"Show Inspector"] | [title isEqualToString:@"Hide Inspector"]) {
-            keyEquivalent = @"i";
-        }
-        
-        SEL action = [self.menuResponder generateSelector:^{
-            [item callHandler];
-            [[UIMenuSystem mainSystem] setNeedsRebuild];
-        }];
-        
-        if (keyEquivalent == nil) {
-            return [UICommand commandWithTitle:title
-                                         image:nil
-                                        action:action
-                                  propertyList:nil];
-        } else {
-            return [UIKeyCommand commandWithTitle:title
-                                            image:nil
-                                           action:action
-                                            input:keyEquivalent
-                                    modifierFlags:UIKeyModifierCommand | UIKeyModifierControl
-                                     propertyList:nil];
-        }
-    }).mutableCopy ;
-    
     UIMenu *resizeMenu = [UIMenu menuWithTitle:@"Resize"
                                       children:@[
         [self resizeMenuForTitle:@"iPhone 12" deviceSize:CGSizeMake(390, 844)],
@@ -267,7 +235,7 @@ _handler(19);
         [self alphaMenuForTitle:@"Alpha 25%" alpha:0.25]
     ]];
     
-    NSArray *menuItems = [@[
+    NSArray *menuItems = @[
         stayOnTop,
         stayOnTopOfEditors,
         reloadMenu,
@@ -275,7 +243,7 @@ _handler(19);
         resizeMenu,
         windowAlphaMenu,
         showDevMenu,
-    ] arrayByAddingObjectsFromArray:devMenuItems];
+    ];
     
     _devMenu = [UIMenu menuWithTitle:@"🛠️ Dev" children:menuItems];
     
