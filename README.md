@@ -10,4 +10,4 @@ The code injects itself into the debug build of the app so there is nothing you 
 
 # Screenshot
 
-<img src="/images/screenshot.png" width="200">
+<img src="/images/screenshot.png" width="50%">
