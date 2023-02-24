@@ -2,3 +2,4 @@ src/
 tsconfig.json
 *.tgz
 .eslintrc.js
+images
