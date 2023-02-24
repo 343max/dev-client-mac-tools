@@ -4,7 +4,6 @@
   "description": "Expo Config Plugin to add a Dev Tools Menu on the Mac",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "private": "true",
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
