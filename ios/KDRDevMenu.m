@@ -57,32 +57,47 @@
     return selector;
 }
 
-#define _handler(index) \
-- (void)handler_##index \
-{                       \
-_handlers[index]();   \
+- (BOOL)isHandler:(SEL)aSelector
+{
+    NSString *selector = NSStringFromSelector(aSelector);
+    return [selector hasPrefix:@"handler_"];
 }
 
-_handler(0);
-_handler(1);
-_handler(2);
-_handler(3);
-_handler(4);
-_handler(5);
-_handler(6);
-_handler(7);
-_handler(8);
-_handler(9);
-_handler(10);
-_handler(11);
-_handler(12);
-_handler(13);
-_handler(14);
-_handler(15);
-_handler(16);
-_handler(17);
-_handler(18);
-_handler(19);
+- (NSInteger)handlerIndex:(SEL)aSelector
+{
+    NSString *selector = NSStringFromSelector(aSelector);
+    NSArray<NSString *> *components = [selector componentsSeparatedByString:@"_"];
+    return [components[1] integerValue];
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    if (![self isHandler:aSelector]) {
+        return [super respondsToSelector:aSelector];
+    } else {
+        NSInteger handlerIndex = [self handlerIndex:aSelector];
+        return handlerIndex < _handlers.count;
+    }
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    if (![self isHandler:anInvocation.selector]) {
+        [super forwardInvocation:anInvocation];
+    } else {
+        NSInteger handlerIndex = [self handlerIndex:anInvocation.selector];
+        _handlers[handlerIndex]();
+    }
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    if (![self isHandler:aSelector]) {
+        return [super methodSignatureForSelector:aSelector];
+    } else {
+        return [NSMethodSignature signatureWithObjCTypes:"v@:@"];
+    }
+}
 
 @end
 
@@ -142,7 +157,7 @@ _handler(19);
     UICommand *stayOnTop = [UICommand commandWithTitle:@"Float On Top"
                                                  image:nil
                                                 action:floatOnTopAction
-                                          propertyList:nil];
+                                          propertyList:@{@"hello": @"world!"}];
     
     stayOnTop.state = [KDRDevHelper sharedHelper].floatsOnTopOfEverything ? UIMenuElementStateOn : UIMenuElementStateOff;
     
