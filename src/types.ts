@@ -2,32 +2,32 @@ const modifiersKeys = ['command', 'alt', 'shift', 'ctrl'] as const;
 export type ModifierKey = (typeof modifiersKeys)[number];
 
 const Keys = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
   '0',
   '1',
   '2',
@@ -46,7 +46,7 @@ export type KeyCombo =
   | `${ModifierKey}-${ModifierKey}-${Key}`
   | `${ModifierKey}-${ModifierKey}-${ModifierKey}-${Key}`;
 
-type MenuItem =
+export type MenuItem =
   | {
       title: string;
       shortcut?: KeyCombo;
@@ -56,13 +56,3 @@ type MenuItem =
         }
       | { subItems: MenuItem[] }
     );
-
-export const extraEntries: MenuItem[] = [
-  { title: 'Open Shake Menu', shortcut: 'command-shift-z', action: () => console.log('hello!') },
-];
-
-export const setAdditionalDevMenuItems = (items: MenuItem[]) => {};
-
-setAdditionalDevMenuItems([
-  { title: 'Open Shake Menu', shortcut: 'command-shift-z', action: () => console.log('hello!') },
-]);

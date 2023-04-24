@@ -10,6 +10,8 @@
 #import <React/RCTDevSettings.h>
 #import <React/RCTReloadCommand.h>
 
+#import <MacDevTools-Swift.h>
+
 #if __has_include(<React/RCTDevMenu.h>)
 #import <React/RCTDevMenu.h>
 #endif
@@ -260,7 +262,17 @@
         showDevMenu,
     ];
     
-    _devMenu = [UIMenu menuWithTitle:@"🛠️ Dev" children:menuItems];
+    __weak KDRDevMenu *weakSelf = self;
+    SEL (^selectorGenerator)(NSString *) = ^SEL(NSString *menuItemId) {
+        return [self->_menuResponder generateSelector:^{
+            [weakSelf.menuElementProvider didSelectWithMenuItemId:menuItemId];
+        }];
+    };
+    
+    NSArray *customMenuItems = [_menuElementProvider setupMenuWithDidSelectSelectorGenerator:selectorGenerator];
+        
+    _devMenu = [UIMenu menuWithTitle:@"🛠️ Dev"
+                            children:[menuItems arrayByAddingObjectsFromArray:customMenuItems]];
     
     [builder insertSiblingMenu:_devMenu beforeMenuForIdentifier:UIMenuHelp];
 }

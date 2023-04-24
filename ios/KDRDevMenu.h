@@ -7,13 +7,15 @@ NS_ASSUME_NONNULL_BEGIN
 @class UIResponder;
 
 @protocol UIMenuBuilder;
-@class RCTBridge;
+@protocol KDRMenuElementProviderDelegate;
 
 @interface KDRDevMenu : NSObject
 
 - (void)setupWithBuilder:(id<UIMenuBuilder>)builder NS_AVAILABLE_IOS(13.0);
 
 - (UIResponder *)nextResponderInsteadOfResponder:(UIResponder *)nextResponder;
+
+@property (weak, nonatomic) id<KDRMenuElementProviderDelegate> menuElementProvider;
 
 @end
 

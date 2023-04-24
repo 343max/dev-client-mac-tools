@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class UIResponder;
 @class RCTBridge;
 @class KDRMainWindowHandler;
+@class KDRDevMenu;
 
 @interface KDRDevHelper : NSObject
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)toggleFloatOnTopOfEditors;
 
 @property (strong, nonatomic, readonly) KDRMainWindowHandler *windowHandler;
+@property (strong, nonatomic, readonly) KDRDevMenu *devMenu;
 
 @end
 
