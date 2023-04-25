@@ -99,7 +99,12 @@ extension MacDevToolsModule: MenuElementProviderDelegate {
 
     public func setupMenu(didSelectSelectorGenerator: (_ menuItemId: String) -> Selector) -> [UIMenuElement] {
         do {
-            return try submenu(items: customMenuItems, didSelectSelectorGenerator: didSelectSelectorGenerator)
+            let items = try submenu(items: customMenuItems, didSelectSelectorGenerator: didSelectSelectorGenerator)
+            if items.isEmpty {
+                return []
+            } else {
+                return [UIMenu(options: .displayInline, children: items)]
+            }
         } catch {
             return []
         }
