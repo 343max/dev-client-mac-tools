@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   React.useEffect(() => {
     setCustomDevMenuItems([
-      { title: 'Hello', action: () => alert('Hello'), shortcut: 'command-alt-H' },
+      { title: 'Hello', action: () => alert('Hello'), shortcut: 'command-alt-shift-H' },
       { title: 'World', action: () => alert('World') },
     ]);
   }, []);
