@@ -6,6 +6,8 @@ const MacDevTools = requireNativeModule('MacDevTools');
 
 const eventEmitter = new EventEmitter(MacDevTools);
 
+export const devMenuEnabled = MacDevTools.enabled();
+
 export const setNativeDevMenuItems = (menuItems: NativeMenuItem[]) => MacDevTools.setCustomDevMenuItems(menuItems);
 
 type MenuItemSelectedEvent = { menuItemId: string };

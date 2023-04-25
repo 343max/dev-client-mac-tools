@@ -14,6 +14,11 @@
 
 #if KDR_ENABLED
 
++ (BOOL)enabled
+{
+    return [self isRunningOnMac];
+}
+
 + (nullable KDRDevHelper *)sharedHelper;
 {
     if (![self isRunningOnMac]) {
@@ -138,6 +143,13 @@
     [[NSUserDefaults standardUserDefaults] setBool:backgroundIgnoresClicks
                                             forKey:@"DEV_windowBackgroundIgnoresClicks"];
     _windowHandler.backgroundIgnoresClicks = backgroundIgnoresClicks;
+}
+
+#else
+
++ (BOOL)enabled
+{
+    return NO;
 }
 
 #endif

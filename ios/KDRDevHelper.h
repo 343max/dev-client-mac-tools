@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable KDRDevHelper *)sharedHelper;
 + (BOOL)isRunningOnMac;
++ (BOOL)enabled;
 
 - (void)buildMenuWithBuilder:(id<UIMenuBuilder>)builder NS_AVAILABLE_IOS(13.0);
 
