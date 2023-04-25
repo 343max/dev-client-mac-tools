@@ -38,7 +38,7 @@ describe('transform', () => {
     expect(nativeMenuItem).toEqual({
       title: 'Hello',
       shortcut: { modifiers: [NativeModifierKey.Command], key: 'A' },
-      id: 'id1',
+      actionId: 'id1',
       enabled: true,
     });
   });
@@ -54,11 +54,10 @@ describe('transform', () => {
     const nativeMenuItem = toNativeMenuItem(menuItemWithSubitems, idGenerator());
     expect(nativeMenuItem).toEqual({
       title: 'With Subitems',
-      id: 'id1',
       enabled: true,
       subitems: [
-        { title: 'Sub Menu 1', id: 'id2', enabled: true },
-        { title: 'Sub Menu 2', id: 'id3', enabled: true },
+        { title: 'Sub Menu 1', actionId: 'id1', enabled: true },
+        { title: 'Sub Menu 2', actionId: 'id2', enabled: true },
       ],
     });
   });
