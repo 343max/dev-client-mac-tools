@@ -54,5 +54,7 @@ export type MenuItem =
       | {
           action: () => void;
         }
-      | { subItems: MenuItem[] }
+      | { subitems: MenuItem[] }
     );
+
+export type MenuItemId = MenuItem & { id: string };

@@ -10,7 +10,7 @@ enum ModifierKey: String, Enumerable {
 struct KeyCombo: Record {
     @Field
     var modifiers: [ModifierKey]
-    
+
     @Field
     var key: String
 }
@@ -18,18 +18,18 @@ struct KeyCombo: Record {
 struct MenuItem: Record {
     @Field
     var id: String
-    
+
     @Field
     var title: String
-    
+
     @Field
     var enabled: Bool
-    
+
     @Field
     var shortcut: KeyCombo?
-    
+
     @Field
-    var subItems: [MenuItem]?
+    var subitems: [MenuItem]?
 }
 
 extension KeyCombo {
@@ -79,7 +79,7 @@ extension MacDevToolsModule: MenuElementProviderDelegate {
             }
         }
     }
-    
+
     public func setupMenu(didSelectSelectorGenerator: (_ menuItemId: String) -> Selector) -> [UIMenuElement] {
         return submenu(items: customMenuItems, didSelectSelectorGenerator: didSelectSelectorGenerator)
     }
