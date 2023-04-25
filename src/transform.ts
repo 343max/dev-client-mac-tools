@@ -39,3 +39,15 @@ export const toNativeMenuItem = (menuItem: MenuItem, nextId: NextIdFn): NativeMe
 
   return nativeMenu;
 };
+
+export const toNativeMenuItems = (menuItems: MenuItem[], nextId: NextIdFn): NativeMenuItem[] =>
+  menuItems.map((menuItem) => toNativeMenuItem(menuItem, nextId));
+
+export const toMenuItemCallbackList = (menuItems: MenuItem[], nextId: NextIdFn): Record<string, () => void> =>
+  menuItems.reduce((acc, menuItem) => {
+    if ('action' in menuItem) {
+      return { ...acc, [nextId()]: menuItem.action };
+    } else {
+      return { ...acc, ...toMenuItemCallbackList(menuItem.subitems, nextId) };
+    }
+  }, {});
