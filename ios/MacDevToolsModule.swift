@@ -11,21 +11,17 @@ public class MacDevToolsModule: Module {
         
     public required init(appContext: AppContext) {
         super.init(appContext: appContext)
-        
+
         KDRDevHelper.shared()?.devMenu.menuElementProvider = self
     }
     
     public func definition() -> ModuleDefinition {
         Name("MacDevTools")
         
+        Events(OnMenuItemSelectedEvent)
+        
         Function("setCustomDevMenuItems") { (items: [MenuItem]) in
             customMenuItems = items
         }
-        
-        Function("devMenuEnabled") {
-            #if KDR_E
-        }
-        
-        Events(OnMenuItemSelectedEvent)
     }
 }
