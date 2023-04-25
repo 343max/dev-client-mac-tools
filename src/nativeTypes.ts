@@ -8,9 +8,9 @@ export enum NativeModifierKey {
 export type NativeKeyCombo = { modifiers: NativeModifierKey[]; key: string };
 
 export type NativeMenuItem = {
-  id: string;
   title: string;
   enabled: boolean;
+  actionId?: string;
   shortcut?: NativeKeyCombo;
   subitems?: NativeMenuItem[];
 };

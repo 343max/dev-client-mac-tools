@@ -17,7 +17,7 @@ struct KeyCombo: Record {
 
 struct MenuItem: Record {
     @Field
-    var id: String
+    var actionId: String?
 
     @Field
     var title: String
@@ -61,15 +61,32 @@ extension KeyCombo: CustomDebugStringConvertible {
     }
 }
 
+enum MacDevToolsError: Error {
+    case missingActionId
+}
+
 extension MacDevToolsModule: MenuElementProviderDelegate {
     public func didSelect(menuItemId: String) {
         sendEvent(OnMenuItemSelectedEvent, ["menuItemId": menuItemId])
     }
 
-    private func submenu(items: [MenuItem], didSelectSelectorGenerator: (_ menuItemId: String) -> Selector) -> [UIMenuElement] {
-        return items.map { item in
-            let action = didSelectSelectorGenerator(item.id)
+    private func submenu(items: [MenuItem], didSelectSelectorGenerator: (_ menuItemId: String) -> Selector) throws -> [UIMenuElement] {
+        return try items.map { item throws in
+            if let subitems = item.subitems, !subitems.isEmpty {
+                return UIMenu(
+                    title: item.title,
+                    children: try submenu(items: subitems, didSelectSelectorGenerator: didSelectSelectorGenerator)
+                )
+            }
+            
+            guard let actionId = item.actionId else {
+                throw MacDevToolsError.missingActionId
+            }
+            
+            let action = didSelectSelectorGenerator(actionId)
+            
             if let shortcut = item.shortcut {
+                
                 return UIKeyCommand(title: item.title,
                                     action: action,
                                     input: shortcut.key,
@@ -81,6 +98,10 @@ extension MacDevToolsModule: MenuElementProviderDelegate {
     }
 
     public func setupMenu(didSelectSelectorGenerator: (_ menuItemId: String) -> Selector) -> [UIMenuElement] {
-        return submenu(items: customMenuItems, didSelectSelectorGenerator: didSelectSelectorGenerator)
+        do {
+            return try submenu(items: customMenuItems, didSelectSelectorGenerator: didSelectSelectorGenerator)
+        } catch {
+            return []
+        }
     }
 }

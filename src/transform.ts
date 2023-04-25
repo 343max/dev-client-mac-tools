@@ -27,15 +27,18 @@ export const idGenerator = (): NextIdFn => {
 };
 
 export const toNativeMenuItem = (menuItem: MenuItem, nextId: NextIdFn): NativeMenuItem => {
-  const nativeMenu: NativeMenuItem = { title: menuItem.title, id: nextId(), enabled: true };
+  const nativeMenu: NativeMenuItem = { title: menuItem.title, enabled: true };
+
+  if ('subitems' in menuItem) {
+    nativeMenu.subitems = menuItem.subitems.map((subitem) => toNativeMenuItem(subitem, nextId));
+    return nativeMenu;
+  }
 
   if (menuItem.shortcut) {
     nativeMenu.shortcut = toNativeKeyCombo(menuItem.shortcut);
   }
 
-  if ('subitems' in menuItem) {
-    nativeMenu.subitems = menuItem.subitems.map((subitem) => toNativeMenuItem(subitem, nextId));
-  }
+  nativeMenu.actionId = nextId();
 
   return nativeMenu;
 };

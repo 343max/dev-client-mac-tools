@@ -8,6 +8,13 @@ export default function App() {
     setCustomDevMenuItems([
       { title: 'Hello', action: () => alert('Hello'), shortcut: 'command-alt-shift-H' },
       { title: 'World', action: () => alert('World') },
+      {
+        title: 'Sub Menu',
+        subitems: [
+          { title: 'Submenu A', action: () => alert('Submenu A') },
+          { title: 'Submenu B', action: () => alert('Submenu B') },
+        ],
+      },
     ]);
   }, []);
 

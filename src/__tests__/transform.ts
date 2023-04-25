@@ -67,18 +67,41 @@ describe('transform', () => {
     const menuItems: MenuItem[] = [
       { title: 'Hello', action: () => {} },
       { title: 'World', action: () => {} },
+      {
+        title: 'Sub Menu',
+        subitems: [
+          { title: 'Submenu A', action: () => {} },
+          { title: 'Submenu B', action: () => {} },
+        ],
+      },
     ];
     const nativeMenuItems = toNativeMenuItems(menuItems, idGenerator());
     expect(nativeMenuItems).toEqual([
       {
         title: 'Hello',
-        id: 'id1',
+        actionId: 'id1',
         enabled: true,
       },
       {
         title: 'World',
-        id: 'id2',
+        actionId: 'id2',
         enabled: true,
+      },
+      {
+        title: 'Sub Menu',
+        enabled: true,
+        subitems: [
+          {
+            enabled: true,
+            actionId: 'id3',
+            title: 'Submenu A',
+          },
+          {
+            enabled: true,
+            actionId: 'id4',
+            title: 'Submenu B',
+          },
+        ],
       },
     ]);
   });
