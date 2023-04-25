@@ -2,24 +2,13 @@ import { requireNativeModule, EventEmitter, Subscription } from 'expo-modules-co
 
 import { NativeMenuItem } from './nativeTypes';
 
-let MacDevTools = null;
-const macDevTools = (): any => {
-  if (MacDevTools === null) {
-    MacDevTools = requireNativeModule('MacDevTools');
-  }
-  return MacDevTools;
-};
+const MacDevTools = requireNativeModule('MacDevTools');
 
-let eventEmitter: EventEmitter | null = null;
-const getEventEmitter = (): EventEmitter => {
-  if (eventEmitter === null) {
-    eventEmitter = new EventEmitter(macDevTools());
-  }
+const eventEmitter = new EventEmitter(MacDevTools);
 
-  return eventEmitter;
-};
+export const setNativeDevMenuItems = (menuItems: NativeMenuItem[]) => MacDevTools.setCustomDevMenuItems(menuItems);
 
-export const setNativeDevMenuItems = (menuItems: NativeMenuItem[]) => macDevTools().setCustomDevMenuItems(menuItems);
+type MenuItemSelectedEvent = { menuItemId: string };
 
-export const addMenuItemSelectedListener = (listener: (event) => void): Subscription =>
-  getEventEmitter().addListener('onMenuItemSelected', listener);
+export const addMenuItemSelectedListener = (listener: (event: MenuItemSelectedEvent) => void): Subscription =>
+  eventEmitter.addListener('onMenuItemSelected', listener);
