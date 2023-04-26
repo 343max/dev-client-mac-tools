@@ -14,14 +14,14 @@
     "expo-dev-menu": "^2.2.0",
     "expo-dev-menu-interface": "^1.1.1",
     "expo-manifests": "^0.5.2",
-    "expo-splash-screen": "~0.18.1",
+    "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "0.71.6"
+    "react-native": "0.71.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@types/react": "~18.0.14",
+    "@types/react": "~18.0.27",
     "typescript": "^4.9.4"
   },
   "private": true,
