@@ -7,11 +7,13 @@ NS_ASSUME_NONNULL_BEGIN
 @class UIResponder;
 @class RCTBridge;
 @class KDRMainWindowHandler;
+@class KDRDevMenu;
 
 @interface KDRDevHelper : NSObject
 
 + (nullable KDRDevHelper *)sharedHelper;
 + (BOOL)isRunningOnMac;
++ (BOOL)enabled;
 
 - (void)buildMenuWithBuilder:(id<UIMenuBuilder>)builder NS_AVAILABLE_IOS(13.0);
 
@@ -23,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)toggleFloatOnTopOfEditors;
 
 @property (strong, nonatomic, readonly) KDRMainWindowHandler *windowHandler;
+@property (strong, nonatomic, readonly) KDRDevMenu *devMenu;
 
 @end
 

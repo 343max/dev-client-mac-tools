@@ -1,0 +1,33 @@
+{
+  "name": "dev-client-mac-tools-example",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "native-dev:project:ios": "rm -rf ios/ && expo prebuild --platform ios",
+    "native-dev:project:android": "rm -rf android/ && expo prebuild --platform android"
+  },
+  "dependencies": {
+    "expo": "~48.0.11",
+    "expo-dev-menu": "^2.2.0",
+    "expo-dev-menu-interface": "^1.1.1",
+    "expo-manifests": "^0.5.2",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "react": "18.2.0",
+    "react-native": "0.71.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.0.27",
+    "typescript": "^4.9.4"
+  },
+  "private": true,
+  "expo": {
+    "autolinking": {
+      "nativeModulesDir": ".."
+    }
+  }
+}

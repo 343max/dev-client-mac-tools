@@ -1,0 +1,15 @@
+.DS_Store
+.expo/
+.metro-health-check*
+*.jks
+*.key
+*.mobileprovision
+*.orig.*
+*.p12
+*.p8
+dist/
+node_modules/
+npm-debug.*
+web-build/
+ios/
+android/
