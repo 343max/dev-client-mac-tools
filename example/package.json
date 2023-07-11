@@ -10,10 +10,10 @@
     "native-dev:project:android": "rm -rf android/ && expo prebuild --platform android"
   },
   "dependencies": {
-    "expo": "^49.0.0",
-    "expo-dev-menu": "^2.2.0",
-    "expo-dev-menu-interface": "^1.1.1",
-    "expo-manifests": "^0.5.2",
+    "expo": "^49.0.2",
+    "expo-dev-menu": "^3.1.7",
+    "expo-dev-menu-interface": "^1.3.0",
+    "expo-manifests": "^0.7.1",
     "expo-splash-screen": "~0.20.4",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
