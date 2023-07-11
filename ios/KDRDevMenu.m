@@ -10,7 +10,7 @@
 #import <React/RCTDevSettings.h>
 #import <React/RCTReloadCommand.h>
 
-#import "MacDevTools-Swift.h"
+#import "Swift.h"
 
 #if __has_include(<React/RCTDevMenu.h>)
 #import <React/RCTDevMenu.h>
