@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 group = 'de.max343.MacDevTools'
-version = '0.1.0'
+version = '0.1.4'
 
 buildscript {
   def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
@@ -37,7 +37,7 @@ buildscript {
 
 // Creating sources with comments
 task androidSourcesJar(type: Jar) {
-  classifier = 'sources'
+  archiveClassifier = 'sources'
   from android.sourceSets.main.java.srcDirs
 }
 
