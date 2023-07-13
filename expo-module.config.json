@@ -2,6 +2,7 @@
   "name": "MacDevTools",
   "platforms": ["ios", "android"],
   "ios": {
+    "modules": ["MacDevToolsModule"],
     "podspecPath": "./MacDevTools.podspec"
   },
   "android": {
