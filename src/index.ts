@@ -21,7 +21,6 @@ export const setCustomDevMenuItems = (items: MenuItem[]) => {
 
   if (Object.keys(callbackList).length > 0) {
     subscription = addMenuItemSelectedListener((event) => {
-      console.log(event);
       const callback = callbackList[event.menuItemId];
       if (!callback) {
         throw new Error(`No callback found for menu item id: ${event.menuItemId}`);
