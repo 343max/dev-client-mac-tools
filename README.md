@@ -34,7 +34,7 @@ By default the menu is only included in debug builds. In production builds the n
 
 # Screenshot
 
-<img src="/images/screenshot.jpg" width="50%">
+<img src="/images/screenshot.jpg">
 
 # Extending the dev menu
 
