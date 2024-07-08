@@ -45,34 +45,33 @@ You can easily add shortcut keys or submenus.
 Here is an example where it's wrapped in its own hook:
 
 ```ts
-
 import { setCustomDevMenuItems } from "dev-client-mac-tools";
 
 const useGenerateDevMenu = () => {
-	React.useEffect(() => {
-		setCustomDevMenuItems([
-			{
-				title: "Say Hello",
-				shortcut: "command-ctrl-alt-S",
-				action: () => {
-					console.log("Hello!");
-				},
-			},
-			{
-				title: "Menu with submenus",
-				subitems: [
-					{
-						title: "Entry 1",
-						action: () => {},
-					},
-					{
-						title: "Entry 2",
-						action: () => {},
-					},
-				],
-			},
-		]);
-	}, []);
+  React.useEffect(() => {
+    setCustomDevMenuItems([
+      {
+        title: "Say Hello",
+        shortcut: "command-ctrl-alt-S",
+        action: () => {
+          console.log("Hello!");
+        },
+      },
+      {
+        title: "Menu with submenus",
+        subitems: [
+          {
+            title: "Entry 1",
+            action: () => {},
+          },
+          {
+            title: "Entry 2",
+            action: () => {},
+          },
+        ],
+      },
+    ]);
+  }, []);
 };
 ```
 
