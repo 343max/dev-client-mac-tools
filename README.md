@@ -32,11 +32,28 @@ By default the menu is only included in debug builds. In production builds the n
 
 (If you want to have tighter control when the menu is included and when not you can control it using the `KDR_ENABLED` preprocessor macro.)
 
-# Screenshot
+# Installation
 
-<img src="/images/screenshot.jpg">
+<img src="/images/install.gif" width="100%">
 
-# Extending the dev menu
+Installation of the Dev Client App takes seconds and is extremly simple. No Xcode install, no build, no Simulator runtime download.
+
+# Update
+
+<img src="/images/update.gif" width="100%">
+
+Updating the Dev Client App is just one click or can even run automatically in the background.
+
+# Commands
+
+<img src="/images/toggle-dark-mode.gif" width="100%">
+<img src="/images/reload.gif" width="100%">
+<img src="/images/toggle-expo-menu.gif" width="100%">
+<img src="/images/resize.gif" width="100%">
+
+# Custom Commands
+
+<img src="/images/custom-commands.gif" width="100%">
 
 To add your own commands to the dev menu you need to call the `setCustomDevMenuItems` function. You should wrap the call in a `useEffect` hook to make sure it doesn't run on every render.
 
