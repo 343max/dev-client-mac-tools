@@ -46,9 +46,16 @@ Updating the Dev Client App is just one click or can even run automatically in t
 
 # Commands
 
+Toggle between dark and light mode
 <img src="/images/toggle-dark-mode.gif" width="100%">
+
+Reload the app
 <img src="/images/reload.gif" width="100%">
+
+Show the Expo Dev Menu
 <img src="/images/toggle-expo-menu.gif" width="100%">
+
+Resize to preview common iPhone sizes
 <img src="/images/resize.gif" width="100%">
 
 # Custom Commands
