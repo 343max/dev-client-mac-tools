@@ -1,4 +1,4 @@
-# Run your iOS expo dev client on your MAc 
+# Run your iOS expo dev client on your Mac 
 
 With [testflight-dev-deploy](https://github.com/343max/testflight-dev-deploy) developers can run expo dev client apps on their phones but also on their Macs. This makes it possible to develop expo apps on an Mac that hasn't installed Xcode at all: all you need are your javascript dev tools, an editor and the dev client app downloaded from TestFlight.
 
