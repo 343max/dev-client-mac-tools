@@ -3,7 +3,7 @@ on:
   # release:
   #   types: [published]
   workflow_dispatch:
-  push:
+  # push:
 jobs:
   build:
     runs-on: ubuntu-latest
