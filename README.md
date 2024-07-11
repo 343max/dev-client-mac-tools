@@ -9,20 +9,20 @@ While this works it's not perfect: reloading the app, connecting to the debugger
 # Commands
 
 Toggle between dark and light mode
-<img src="/images/toggle-dark-mode.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/toggle-dark-mode.gif" width="100%">
 
 Reload the app
-<img src="/images/reload.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/reload.gif" width="100%">
 
 Show the Expo Dev Menu
-<img src="/images/toggle-expo-menu.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/toggle-expo-menu.gif" width="100%">
 
 Resize to preview common iPhone sizes
-<img src="/images/resize.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/resize.gif" width="100%">
 
 # Custom Commands
 
-<img src="/images/custom-commands.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/custom-commands.gif" width="100%">
 
 To add your own commands to the dev menu you need to call the `setCustomDevMenuItems` function. You should wrap the call in a `useEffect` hook to make sure it doesn't run on every render.
 
@@ -81,12 +81,12 @@ By default the menu is only included in debug builds. In production builds the n
 
 # Installing the Dev Client App from TestFlight on your developers Mac
 
-<img src="/images/install.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/install.gif" width="100%">
 
 Installation of the Dev Client App takes seconds and is extremly simple. No Xcode install, no build, no Simulator runtime download.
 
 # Updating the Dev Client App from TestFlight
 
-<img src="/images/update.gif" width="100%">
+<img src="https://raw.githubusercontent.com/343max/dev-client-mac-tools/main/images/update.gif" width="100%">
 
 Updating the Dev Client App is just one click or can even run automatically in the background.
